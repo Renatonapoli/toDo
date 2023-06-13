@@ -1,7 +1,7 @@
 .containerLists header {
   display: flex;
-
   justify-content: space-between;
+  margin-top: 4rem;
   margin-bottom: 1.5rem;
 }
 
@@ -60,7 +60,6 @@
 
 section {
   display: flex;
-  align-items: center;
   background: var(--gray-500);
   width: 46rem;
   height: 72px;
@@ -68,4 +67,25 @@ section {
   border: 1px solid var(--gray-400);
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
   border-radius: 8px;
+}
+
+section ul {
+  display: flex;
+}
+
+section input {
+  width: 1.063rem;
+  height: 1.063rem;
+  border: 1px solid var(--blue);
+  box-shadow: inset;
+}
+
+section p {
+  margin: 0 0.75rem;
+  font-size: 0.875rem;
+}
+
+section img {
+  width: 1.5rem;
+  height: 1.5rem;
 }
