@@ -1,7 +1,7 @@
 .container {
   display: flex;
   margin-top: -1.8rem;
-  position: absolute;
+  position: relative;
   justify-content: center;
   align-items: center;
 }

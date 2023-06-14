@@ -48,7 +48,7 @@
   margin-left: 0.5rem;
   justify-content: center;
   background: var(--gray-400);
-  width: 3.25rem;
+  width: 3.75rem;
   height: 1.1875rem;
   padding: 0.13rem 0.5rem;
   border-radius: 999px;
@@ -59,11 +59,12 @@
 }
 
 section {
-  display: flex;
+  white-space: normal;
   background: var(--gray-500);
   width: 46rem;
   height: 72px;
   padding: 1rem;
+  margin-bottom: 1rem;
   border: 1px solid var(--gray-400);
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
   border-radius: 8px;
@@ -71,6 +72,7 @@ section {
 
 section ul {
   display: flex;
+  justify-content: space-between;
 }
 
 section input {
@@ -81,8 +83,13 @@ section input {
 }
 
 section p {
-  margin: 0 0.75rem;
+  margin-right: auto;
+  margin-left: 0.75rem;
   font-size: 0.875rem;
+}
+
+.completedTask {
+  text-decoration: line-through;
 }
 
 section img {
