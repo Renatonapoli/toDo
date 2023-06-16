@@ -6,9 +6,12 @@ interface SearchProps {
 }
 
 export function Search({ onAddTask }: SearchProps) {
-  const [inputValue, setInpuValue] = useState("")
+  const [inputValue, setInpuValue] = useState<string>("")
 
   function handleInsertInformation() {
+    if (!inputValue) {
+      return null
+    }
     onAddTask(inputValue)
     setInpuValue("")
   }

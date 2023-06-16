@@ -73,9 +73,10 @@ export function Lists(props: ListsProps) {
                 type="radio"
                 name="taskRadio"
                 id={`taskRadio${index}`}
+                className={styles.radio}
                 checked={index === checkedTask}
-                onChange={() => handleTaskStatusChange(index)}
-                onClick={() => handleRadioClick(index)}
+                onChange={() => handleRadioClick(index)}
+                onClick={() => handleTaskStatusChange(index)}
               />
               <p className={index === checkedTask ? styles.completedTask : ""}>
                 {task}

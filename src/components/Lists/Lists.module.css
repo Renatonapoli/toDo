@@ -76,13 +76,24 @@ section ul {
 }
 
 section input {
+  appearance: initial;
+  border: 2px solid var(--blue);
+  border-radius: 50%;
+
   width: 1.063rem;
   height: 1.063rem;
-  border: 1px solid var(--blue);
-  box-shadow: inset;
+}
+
+section input:checked {
+  border: none;
+  background: url(../../assets/check.svg) no-repeat var(--purple-dark);
+  background-position: center;
 }
 
 section p {
+  width: 45rem;
+
+  word-break: break-word;
   margin-right: auto;
   margin-left: 0.75rem;
   font-size: 0.875rem;
