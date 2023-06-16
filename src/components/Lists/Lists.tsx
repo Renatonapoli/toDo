@@ -26,7 +26,9 @@ export function Lists(props: ListsProps) {
       }
       return prevCheckedTask
     })
-    setCompletedTasks((prevCompletedTasks) => prevCompletedTasks - 1)
+    setCompletedTasks((prevCompletedTasks) =>
+      prevCompletedTasks ? prevCompletedTasks - 1 : 0
+    )
   }
 
   function handleTaskStatusChange(index: number) {
