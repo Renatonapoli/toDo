@@ -35,4 +35,12 @@
   gap: 0.5rem;
   border-radius: 0.5rem;
   border: none;
+  cursor: pointer;
+
+  transition: 0.8s linear;
+}
+
+.container button:hover {
+  background: var(--purple-dark);
+  transition-delay: 12ms linear;
 }
