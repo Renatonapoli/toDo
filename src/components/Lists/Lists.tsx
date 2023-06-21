@@ -1,4 +1,6 @@
 import styles from "./Lists.module.css";
+import ClipboardImage from "../../assets/Clipboard.svg";
+import TarshImagem from "../../assets/trash.svg";
 
 import { useState } from "react";
 import { Search } from "../Search/Search";
@@ -77,7 +79,7 @@ export function Lists(props: ListsProps) {
 
       {tasks.length === 0 ? (
         <ul className={styles.zeroList}>
-          <img src="../../src/assets/Clipboard.svg" alt="" />
+          <img src={ClipboardImage} alt="" />
           <p>Você ainda não tem tarefas cadastradas</p>
           <span>Crie tarefas e organize seus itens a fazer</span>
         </ul>
@@ -104,7 +106,7 @@ export function Lists(props: ListsProps) {
             </p>
             <img
               onClick={() => handleDeleteTask(task.id)}
-              src="../../src/assets/trash.svg"
+              src={TarshImagem}
               alt=""
             />
           </ul>
