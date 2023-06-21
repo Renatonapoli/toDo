@@ -1,17 +1,17 @@
-import { Navbar } from "./components/Navbar/Navbar"
-import { Lists } from "./components/Lists/Lists"
+import { Navbar } from "./components/Navbar/Navbar";
+import { Lists } from "./components/Lists/Lists";
 
-import styles from "./App.module.css"
+import styles from "./App.module.css";
 
-import "./global.css"
+import "./global.css";
 
 export function App() {
   return (
     <div>
       <Navbar />
       <main className={styles.containerLists}>
-        <Lists />
+        <Lists title="" />
       </main>
     </div>
-  )
+  );
 }

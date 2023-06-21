@@ -4,9 +4,12 @@ import { useState } from "react";
 import { Search } from "../Search/Search";
 import { v4 as uuid } from "uuid";
 
-interface ListsProps {}
+interface ListsProps {
+  title: string;
+}
 
 export function Lists(props: ListsProps) {
+  const { title } = props;
   const [tasks, setTasks] = useState<{ id: string; name: string }[]>([]);
   const [completedTasks, setCompletedTasks] = useState<number>(0);
   const [selectedTasks, setSelectedTasks] = useState<string[]>([]);
@@ -58,6 +61,7 @@ export function Lists(props: ListsProps) {
   return (
     <div className={styles.containerLists}>
       <Search onAddTask={handleAddTask} />
+      <h1 className={styles.title}>{title}</h1>
       <header>
         <div className={styles.taskCreated}>
           <p>Tarefas criadas</p>
