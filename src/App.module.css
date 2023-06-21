@@ -1,7 +1,8 @@
 .containerLists {
   display: flex;
   justify-content: center;
-  width: 100%;
 
-  background: var(--gray-600);
+  @media (max-width: 768px) {
+    padding-inline: 0.5rem;
+  }
 }

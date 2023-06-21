@@ -1,44 +1,56 @@
-import { useState } from "react";
 import styles from "./Lists.module.css";
+
+import { useState } from "react";
 import { Search } from "../Search/Search";
+import { v4 as uuid } from "uuid";
 
 interface ListsProps {}
 
 export function Lists(props: ListsProps) {
-  const [tasks, setTasks] = useState<string[]>([]);
+  const [tasks, setTasks] = useState<{ id: string; name: string }[]>([]);
   const [completedTasks, setCompletedTasks] = useState<number>(0);
-  const [selectedTasks, setSelectedTasks] = useState<number[]>([]);
+  const [selectedTasks, setSelectedTasks] = useState<string[]>([]);
 
   function handleAddTask(task: string) {
-    setTasks((prevTasks) => [...prevTasks, task]);
+    const newTask = { id: uuid(), name: task };
+    setTasks((prevTasks) => [...prevTasks, newTask]);
   }
 
-  function handleDeleteTask(index: number) {
+  function handleDeleteTask(taskId: string) {
+    const deletedTask = tasks.find((task) => task.id === taskId);
+
+    if (!deletedTask) {
+      return;
+    }
+
+    const isCompleted = selectedTasks.includes(taskId);
+
+    if (isCompleted) {
+      setCompletedTasks((prevCompletedTasks) =>
+        prevCompletedTasks > 0 ? prevCompletedTasks - 1 : 0
+      );
+    }
+
     setTasks((prevTasks) => {
-      const newTasks = [...prevTasks];
-      newTasks.splice(index, 1);
+      const newTasks = prevTasks.filter((task) => task.id !== taskId);
       return newTasks;
     });
 
     setSelectedTasks((prevSelectedTasks) =>
-      prevSelectedTasks.filter((taskIndex) => taskIndex !== index)
-    );
-
-    setCompletedTasks((prevCompletedTasks) =>
-      prevCompletedTasks > 0 ? prevCompletedTasks - 1 : 0
+      prevSelectedTasks.filter((taskId) => taskId !== deletedTask.id)
     );
   }
 
-  function handleTaskStatusChange(index: number) {
-    if (selectedTasks.includes(index)) {
+  function handleTaskStatusChange(taskId: string) {
+    if (selectedTasks.includes(taskId)) {
       setSelectedTasks((prevSelectedTasks) =>
-        prevSelectedTasks.filter((taskIndex) => taskIndex !== index)
+        prevSelectedTasks.filter((prevTaskId) => prevTaskId !== taskId)
       );
       setCompletedTasks((prevCompletedTasks) =>
         prevCompletedTasks > 0 ? prevCompletedTasks - 1 : 0
       );
     } else {
-      setSelectedTasks((prevSelectedTasks) => [...prevSelectedTasks, index]);
+      setSelectedTasks((prevSelectedTasks) => [...prevSelectedTasks, taskId]);
       setCompletedTasks((prevCompletedTasks) => prevCompletedTasks + 1);
     }
   }
@@ -59,27 +71,27 @@ export function Lists(props: ListsProps) {
         </div>
       </header>
 
-      {tasks.map((task, index) => (
-        <section key={index}>
+      {tasks.map((task) => (
+        <section key={task.id}>
           <ul>
             <input
               type="checkbox"
-              name={`taskRadio${index}`}
-              id={`taskRadio${index}`}
+              name={`taskRadio${task.id}`}
+              id={`taskRadio${task.id}`}
               className={styles.radio}
-              checked={selectedTasks.includes(index)}
-              onChange={() => handleTaskStatusChange(index)}
+              checked={selectedTasks.includes(task.id)}
+              onChange={() => handleTaskStatusChange(task.id)}
             />
-            <label htmlFor={`taskCheckbox${index}`}></label>
+            <label htmlFor={`taskCheckbox${task.id}`}></label>
             <p
               className={
-                selectedTasks.includes(index) ? styles.completedTask : ""
+                selectedTasks.includes(task.id) ? styles.completedTask : ""
               }
             >
-              {task}
+              {task.name}
             </p>
             <img
-              onClick={() => handleDeleteTask(index)}
+              onClick={() => handleDeleteTask(task.id)}
               src="../../src/assets/trash.svg"
               alt=""
             />
