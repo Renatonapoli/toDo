@@ -1,0 +1,17 @@
+.logo {
+  display: flex;
+  justify-content: center;
+  padding: 5rem 0;
+  height: 200px;
+  background: var(--gray-700);
+}
+
+.logo img {
+  width: 7.92rem;
+  height: 2.9rem;
+
+  @media (max-width: 768px) {
+    width: 6rem;
+    height: 2.9rem;
+  }
+}
