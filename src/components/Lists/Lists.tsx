@@ -75,6 +75,14 @@ export function Lists(props: ListsProps) {
         </div>
       </header>
 
+      {tasks.length === 0 ? (
+        <ul className={styles.zeroList}>
+          <img src="../../src/assets/Clipboard.svg" alt="" />
+          <p>Você ainda não tem tarefas cadastradas</p>
+          <span>Crie tarefas e organize seus itens a fazer</span>
+        </ul>
+      ) : null}
+
       {tasks.map((task) => (
         <section key={task.id}>
           <ul>
