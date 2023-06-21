@@ -1,9 +1,10 @@
-import styles from "./Navbar.module.css"
+import styles from "./Navbar.module.css";
+import LogoImagem from "../../assets/logo.svg";
 
 export function Navbar() {
   return (
     <div className={styles.logo}>
-      <img src="../../src/assets/logo.svg" alt="" />
+      <img src={LogoImagem} alt="" />
     </div>
-  )
+  );
 }
